@@ -2,7 +2,7 @@ name: Weekly AI Prototyping Digest
 
 on:
   schedule:
-    - cron: "0 9 * * 5"   # Every Friday at 9:00 AM UTC (adjust to your timezone)
+    - cron: "0 17 * * 5"   # Every Friday at 9:00 AM UTC (adjust to your timezone)
   workflow_dispatch:        # Also lets you trigger it manually from GitHub
 
 jobs:
