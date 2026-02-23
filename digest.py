@@ -32,7 +32,7 @@ Format your response as clean HTML for an email (no markdown). Structure it as:
 5. A citations section with numbered links to all sources
 
 Use only real URLs from your web search. Keep the tone direct and practical — written 
-for a builder, not a journalist."""
+for a builder, not a journalist. Output only the raw HTML with no introduction, explanation, or commentary before or after it."""
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
