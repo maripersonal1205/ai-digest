@@ -41,10 +41,13 @@ for a builder, not a journalist."""
         messages=[{"role": "user", "content": prompt}]
     )
 
-    # Extract all text blocks from the response
-    return "\n".join(
-        block.text for block in response.content if block.type == "text"
-    )
+full_text = "\n".join(
+    block.text for block in response.content if block.type == "text"
+)
+# Strip any markdown code fences Claude adds around the HTML
+import re
+match = re.search(r'```html\s*([\s\S]*?)```', full_text)
+return match.group(1).strip() if match else full_text.strip()
 
 
 def send_email(html_body: str):
