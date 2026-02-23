@@ -68,7 +68,7 @@ def generate_digest() -> str:
     prompt = f"""Today is {today} (Friday). You are an expert AI research analyst covering 
 the AI prototyping ecosystem for practitioners who build AI-powered products.
 
-Search the web and produce a cited weekly digest of the most important AI prototyping 
+Do no more than 3 web searches total. Search the web and produce a cited weekly digest of the most important AI prototyping 
 news from the past 7 days. Focus on what directly affects someone building AI-powered 
 product prototypes: new model releases & APIs, developer tools & SDKs, prompt engineering 
 breakthroughs, multimodal capabilities, agent frameworks, open-source releases, pricing 
@@ -106,7 +106,7 @@ Include 3-4 stories. Use only real URLs from your web search."""
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4000,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 3}],
         messages=[{"role": "user", "content": prompt}]
     )
 
